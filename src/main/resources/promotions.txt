@@ -1,0 +1,16 @@
+{
+    "total" : [
+                 {
+                    "price" : "60.00",
+                    "discount" : "10",
+                    "type" : "PERCENT"
+                  }
+               ],
+     "bulk" : [
+                 {
+                    "item" : "0001",
+                    "count" : 2,
+                    "price" : "8.50"
+                 }
+              ]
+}

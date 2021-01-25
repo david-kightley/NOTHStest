@@ -1,0 +1,32 @@
+{
+    "total" : [
+                 {
+                    "price" : "60.00",
+                    "discount" : "10",
+                    "type" : "PERCENT"
+                  },
+                  {
+                      "price" : "100.00",
+                      "discount" : "20",
+                      "type" : "ABSOLUTE"
+                  }
+
+               ],
+     "bulk" : [
+                 {
+                    "item" : "ID_1",
+                    "count" : 2,
+                    "price" : "8.50"
+                 },
+                 {
+                    "item" : "ID_3",
+                    "count" : 5,
+                    "price" : "83.50"
+                 },
+                 {
+                    "item" : "ID_5",
+                    "count" : 3,
+                    "price" : "18.50"
+                 }
+              ]
+}
