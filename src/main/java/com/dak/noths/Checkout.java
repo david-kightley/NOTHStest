@@ -73,10 +73,12 @@ public class Checkout {
             JsonNode discountRuleList = rootNode.get("total");
             ObjectReader reader = mapper.readerFor(new TypeReference<List<DiscountRule>>() {});
             this.discountRuleList = reader.readValue(discountRuleList);
+            log.debug("Loaded " + this.discountRuleList.size() + " discount rules");
 
             JsonNode bulkRuleList = rootNode.get("bulk");
             reader = mapper.readerFor(new TypeReference<List<BulkRule>>() {});
             this.bulkRuleList = reader.readValue(bulkRuleList);
+            log.debug("Loaded " + this.bulkRuleList.size() + " bulk rules");
 
         } catch (Exception e) {
             log.info("Exception loading promotions from file: " + promosFilename, e);
@@ -104,13 +106,31 @@ public class Checkout {
         return "£" + basket.getBasketPrice().toPlainString();
     }
 
+    public void reset() {
+        itemList.clear();
+        log.info("Checkout reset");
+    }
+
 
     public static void main(String[] args) {
         String filename = args.length > 0 ? args[0] : "";
         Checkout cb = new Checkout(filename);
         cb.scan("001");
+        cb.scan("002");
+        cb.scan("003");
+        System.out.println(cb.total());
+
+        cb.reset();
+        cb.scan("001");
         cb.scan("003");
         cb.scan("001");
+        System.out.println(cb.total());
+
+        cb.reset();
+        cb.scan("001");
+        cb.scan("002");
+        cb.scan("001");
+        cb.scan("003");
         System.out.println(cb.total());
     }
 }
